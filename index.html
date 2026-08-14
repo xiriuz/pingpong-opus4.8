@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#BFE8FF">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏓</text></svg>">
+  <title>핑퐁팡!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="핑퐁팡 탁구 게임"></canvas>
+  <main id="ui">
+    <section id="title-screen" class="screen active">
+      <div class="logo"><span>🏓</span> 핑퐁팡!</div>
+      <p class="subtitle">통통 튀는 우리들의 탁구 시간!</p>
+      <div class="menu">
+        <button data-mode="single" class="primary"><i>①</i> 혼자 하기 <small>캐릭터를 고르면 바로 시작!</small></button>
+        <button data-mode="versus_local" class="pink"><i>①</i> 둘이 하기 <small>한 폰으로 함께</small></button>
+      </div>
+      <button id="mute-title" class="icon-button" aria-label="소리 끄기">🔊</button>
+      <div class="float-deco">♥　★　●　★　♥</div>
+    </section>
+
+    <section id="select-screen" class="screen">
+      <button class="back-button" data-back>‹ 처음으로</button>
+      <h1 id="select-title">② 캐릭터를 골라봐!</h1>
+      <p id="select-step" class="subtitle"></p>
+      <div class="character-grid">
+        <button class="character-card boy" data-character="boy">
+          <canvas width="200" height="200"></canvas><strong>뾰족머리</strong><span>씩씩한 남자아이</span>
+        </button>
+        <button class="character-card girl" data-character="girl">
+          <canvas width="200" height="200"></canvas><strong>긴머리</strong><span>발랄한 여자아이</span>
+        </button>
+      </div>
+      <div id="difficulty" class="difficulty">
+        <span>난이도</span>
+        <button data-difficulty="easy" class="selected">쉬움</button>
+        <button data-difficulty="normal">보통</button>
+        <button data-difficulty="hard">어려움</button>
+      </div>
+    </section>
+
+    <section id="game-screen" class="screen game-ui">
+      <div id="scoreboard"><span id="p1-score">0</span><b>:</b><span id="p2-score">0</span></div>
+      <div id="serve-guide">오른쪽을 톡! 서브 준비</div>
+      <div id="start-help">
+        <div class="help-move"><span>왼쪽</span><strong>누르고 움직여!</strong></div>
+        <div class="help-hit"><span>오른쪽</span><strong>여기를 톡!</strong><i>☝️</i></div>
+      </div>
+      <button id="pause-button" class="icon-button" aria-label="일시정지">Ⅱ</button>
+      <button id="mute-game" class="icon-button" aria-label="소리 끄기">🔊</button>
+      <div id="orientation"><div>↻</div><strong>폰을 눕혀주세요!</strong><span>둘이 하려면 가로로 놓아줘</span></div>
+    </section>
+
+    <section id="pause-screen" class="screen overlay">
+      <div class="panel"><h1>잠깐 쉬는 중!</h1><button id="resume" class="primary">계속 하기</button><button data-home>처음으로</button></div>
+    </section>
+
+    <section id="result-screen" class="screen overlay">
+      <div class="panel result-panel"><canvas id="winner" width="260" height="260"></canvas><h1 id="result-title">이겼어!</h1><p id="result-message"></p><p>최고 랠리 <strong id="best-rally">0</strong>번!</p><button id="rematch" class="primary">한 번 더!</button><button data-home>처음으로</button></div>
+    </section>
+  </main>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
